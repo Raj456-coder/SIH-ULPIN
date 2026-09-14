@@ -1,0 +1,70 @@
+/* Global styles & Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CesiumJS overrides ─────────────────────────────── */
+/* Hide default Cesium toolbar (we use our own) */
+.cesium-viewer-toolbar,
+.cesium-viewer-bottom,
+.cesium-viewer-animationContainer,
+.cesium-viewer-timelineContainer,
+.cesium-viewer-fullscreenContainer,
+.cesium-viewer-vrContainer,
+.cesium-viewer-geocoderContainer {
+  display: none !important;
+}
+
+/* Keep the credit overlay but minimise it */
+.cesium-viewer-cesiumWidgetContainer canvas {
+  outline: none;
+}
+
+/* ── Scrollbar styling ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+/* ── Utility classes ────────────────────────────────── */
+.ulpin-badge {
+  @apply font-mono text-xs bg-navy text-white px-2 py-1 rounded tracking-wider;
+}
+
+.property-type-surface {
+  @apply bg-blue-100 text-blue-800 border border-blue-300;
+}
+
+.property-type-vertical {
+  @apply bg-orange-100 text-orange-800 border border-orange-300;
+}
+
+.property-type-subsurface {
+  @apply bg-amber-100 text-amber-800 border border-amber-300;
+}
+
+/* Sidebar slide animation */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+.sidebar-enter {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+/* Pulse animation for topology badge */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(19,136,8,0.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(19,136,8,0); }
+}
+
+.pulse-green {
+  animation: pulse-green 2s infinite;
+}
